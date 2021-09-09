@@ -1,2 +1,6 @@
 Gmapアプリのフロントエンド部分
+Typescriptを使ってreactで作成した。
+redux toolkit や　react hook formなどを使っている。とりあえずuserに関する部分はsliceにした。
+
 useContextの代わりにrecoilを使いたかったが不具合により断念
+recoilについてもう少し学習が進んだらuseContextからrecoilに切り替える。
