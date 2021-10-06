@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux';
 import { selectIsLoginView } from '../User/features/login/loginSlice';
 
 const Header: React.FC = () => {
-  console.log('Header');
   const isLoginView = useSelector(selectIsLoginView);
   return (
     <>

@@ -1,11 +1,8 @@
-// import axios, { AxiosRequestConfig } from 'axios'
 import axios from 'axios';
 import React, { useState, useContext, useEffect } from 'react';
 import { GoogleMap, LoadScript, InfoWindow, Marker } from '@react-google-maps/api';
 import { Gmap } from '../components/interface/Gmap';
 import GmapFlagContext from '../components/context/GmapFlagContext';
-// import { GmapsState } from '../components/context/GmapRecoil';
-// import { useRecoilState } from 'recoil';
 import GmapsContext from '../components/context/GmapsContext';
 
 const containerStyle = {
@@ -14,8 +11,6 @@ const containerStyle = {
 };
 
 const MainGmaps: React.FC = () => {
-  console.log('MainGmaps');
-  // const [gmaps, setGmaps] = useRecoilState(GmapsState);
   const { gmaps, setGmaps } = useContext(GmapsContext);
   const [selected, setSelected] = useState<Gmap>();
   const { gflag } = useContext(GmapFlagContext);
@@ -37,7 +32,7 @@ const MainGmaps: React.FC = () => {
     result = resultArr.join('<br>');
     return result;
   };
-  // , mgmaps: Gmap[]
+
   const DeleteMarker = async (marker: Gmap) => {
     if (confirm('本当に削除しますか?削除すると戻せません。')) {
       await axios
@@ -127,4 +122,4 @@ const MainGmaps: React.FC = () => {
   );
 };
 
-export default React.memo(MainGmaps);
+export default MainGmaps;

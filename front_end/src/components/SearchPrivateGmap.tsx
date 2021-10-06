@@ -32,7 +32,6 @@ const SearchPrivate: React.FC = () => {
     };
     await axios(requestParam)
       .then(({ data }) => {
-        console.log('GetGmapsByPrivate', data);
         const apiResponse: Gmap[] = data;
         setGmaps(apiResponse);
       })

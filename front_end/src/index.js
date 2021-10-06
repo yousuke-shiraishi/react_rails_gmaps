@@ -4,11 +4,7 @@ import './index.css';
 import App from './App';
 import { Provider } from 'react-redux';
 import store from './User/features/login/store';
-// import reportWebVitals from './reportWebVitals.ts'
-if (process.env.NODE_ENV !== 'production') {
-  const { whyDidYouUpdate } = require('why-did-you-update');
-  whyDidYouUpdate(React);
-}
+import './wdyr';
 
 ReactDOM.render(
   <React.StrictMode>

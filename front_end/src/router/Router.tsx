@@ -13,19 +13,15 @@ import GmapFlagContext from '../components/context/GmapFlagContext';
 import Header from '../components/Header';
 import GmapsContext from '../components/context/GmapsContext';
 import { Gmap } from '../components/interface/Gmap';
-// import { RecoilRoot } from 'recoil'
 
 export const Router: React.FC = () => {
-  console.log('Router');
   const [gflag, setGmapFlag] = useState<boolean>(false);
   const [gmaps, setGmaps] = useState<Gmap[]>([]);
-  // const [gmaps, setGmaps] = useState(useContext(GmapsContext));
 
   return (
     <div className="wrap-grid">
       {/* <RecoilRoot> */}
-      <GmapsContext.Provider value={{ gmaps, setGmaps }}>
-        <GmapFlagContext.Provider value={{ gflag, setGmapFlag }}>
+      <GmapFlagContext.Provider value={{ gflag, setGmapFlag }}>
           <Grid container direction="row" spacing={4}>
             <Grid item xs={12}>
               <Header />
@@ -33,12 +29,14 @@ export const Router: React.FC = () => {
             <Switch>
               <Route exact path="/">
                 <Grid container direction="column" spacing={4}>
+                <GmapsContext.Provider value={{ gmaps, setGmaps }}>
                   <Grid item xs={8}>
                     <MainGmaps />
                   </Grid>
                   <Grid item xs={4}>
                     <SwithingSearch />
                   </Grid>
+                </GmapsContext.Provider>
                 </Grid>
               </Route>
               <Route exact path="/login">
@@ -61,8 +59,7 @@ export const Router: React.FC = () => {
               </Route>
             </Switch>
           </Grid>
-        </GmapFlagContext.Provider>
-      </GmapsContext.Provider>
+      </GmapFlagContext.Provider>
       {/* </RecoilRoot> */}
     </div>
   );

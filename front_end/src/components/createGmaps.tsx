@@ -1,7 +1,6 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import React, { useEffect, useState, useContext } from 'react';
 import { FormControl, Button, TextField } from '@material-ui/core';
-import { Gmap } from './interface/Gmap';
 import GmapFlagContext from '../components/context/GmapFlagContext';
 import imageCompression from 'browser-image-compression';
 
@@ -61,8 +60,7 @@ const CreateGmap: React.FC = () => {
       },
     };
     await axios(requestParam)
-      .then(({ data }) => {
-        const apiResponse: Gmap[] = data;
+      .then(() => {
         setGmapFlag(!gflag);
       })
       .catch((error) => {
@@ -109,4 +107,4 @@ const CreateGmap: React.FC = () => {
     </>
   );
 };
-export default CreateGmap;
+export default React.memo(CreateGmap);

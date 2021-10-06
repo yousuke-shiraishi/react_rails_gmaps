@@ -7,7 +7,7 @@ import { SearchPubObj } from './interface/SearchPubObj';
 import GmapsContext from './context/GmapsContext';
 
 const SearchPublic: React.FC = () => {
-  const { setGmaps } = useContext(GmapsContext);
+  const { gmaps, setGmaps } = useContext(GmapsContext);
   const {
     register,
     formState: { errors },

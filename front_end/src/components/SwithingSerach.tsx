@@ -5,7 +5,6 @@ import SearchPublic from './SearchPublicGmap';
 import CreateGmap from './createGmaps';
 
 const SwithingSearch: React.FC = () => {
-  console.log('SwithingSearch');
   const [searchGmap, setSearchGmaps] = useState(true);
   const [radio, setRadio] = useState(true);
 

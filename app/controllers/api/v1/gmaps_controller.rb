@@ -2,6 +2,7 @@ module Api
     module V1
       class GmapsController < ApplicationController
         before_action :authenticate_api_user!, only: %i[destroy create search_private]
+        before_action :set_s3_direct_post, only: [:create]
         require 'digest/md5'
         include CarrierwaveBase64Uploader
 
@@ -19,7 +20,6 @@ module Api
               @gmap.picture = base64_conversion(params[:picture])
             end
 
-            # binding.pry
 
             if @gmap.save
 
@@ -52,12 +52,12 @@ module Api
           private
 
           def gmap_params
-            # params.except(:format).permit(:title, :comment,
-            #                             :magic_word, :latitude, :longitude, :picture)
             params.except(:format).permit(:title, :comment,
               :magic_word, :latitude, :longitude, :picture)
           end
-
+          def set_s3_direct_post
+            @s3_direct_post = S3_BUCKET.presigned_post(key: "uploads/#{SecureRandom.uuid}/${filename}", success_action_status: '201', acl: 'public-read')
+          end
 
       end
     end
